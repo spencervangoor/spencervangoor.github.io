@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spencer Van Goor | Digital Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0b2545;
+            --secondary-color: #134074;
+            --accent-color: #8da9c4;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #1d2d44;
+            --text-muted: #6c757d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #ffffff;
+            padding: 4rem 2rem;
+        }
+
+        .hero-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-container {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+
+        .profile-img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .personal-statement {
+            font-size: 1.05rem;
+            font-style: italic;
+            max-width: 700px;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ffffff;
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2.section-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .card-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .card-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 0.75rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        ul.bullets {
+            margin-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        ul.bullets li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-badge {
+            background-color: #eef4f8;
+            color: var(--secondary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Contact Links */
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Spencer Van Goor</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero / Personal Statement Section -->
+    <header class="hero" id="about">
+        <div class="hero-container">
+            <img src="headshot.jpg" alt="Spencer Van Goor" class="profile-img">
+            <div class="hero-text">
+                <h1>Spencer Van Goor</h1>
+                <h2>Rutgers University • BS in Marketing | Minors in Music Technology & Technical Writing</h2>
+                <p class="personal-statement">"As a Rutgers Marketing major with minors in Music Technology and Technical Writing, I synthesize clear strategic messaging and creative audio-digital media to connect brands with their audiences."</p>
+                <a href="#contact" class="btn">Get In Touch</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Skills & Capabilities</h2>
+            <div class="card">
+                <p style="margin-bottom: 0.75rem;"><strong>Technical & Digital Tools:</strong></p>
+                <div class="skills-grid" style="margin-bottom: 1.5rem;">
+                    <span class="skill-badge">WordPress</span>
+                    <span class="skill-badge">Web Development</span>
+                    <span class="skill-badge">Canva</span>
+                    <span class="skill-badge">Adobe Essentials</span>
+                    <span class="skill-badge">Microsoft Office Suite</span>
+                    <span class="skill-badge">Social Media Analytics</span>
+                </div>
+
+                <p style="margin-bottom: 0.75rem;"><strong>Professional & Core Competencies:</strong></p>
+                <div class="skills-grid" style="margin-bottom: 1.5rem;">
+                    <span class="skill-badge">Analytical Research Writing</span>
+                    <span class="skill-badge">Strategic Communication</span>
+                    <span class="skill-badge">Event Coordination</span>
+                    <span class="skill-badge">Public Speaking</span>
+                    <span class="skill-badge">Leadership</span>
+                    <span class="skill-badge">Audio & Music Technology</span>
+                </div>
+
+                <p style="margin-bottom: 0.75rem;"><strong>Languages:</strong></p>
+                <div class="skills-grid">
+                    <span class="skill-badge">English (Native)</span>
+                    <span class="skill-badge">Spanish (Moderate)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Showcase Section -->
+        <section id="projects">
+            <h2 class="section-title">Projects Showcase</h2>
+
+            <!-- Project 1 -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Writing in the Professions: AI & Marketing Strategy Portfolio</div>
+                        <div class="card-subtitle">Academic Research & Professional Document Suite • Rutgers University</div>
+                    </div>
+                    <div class="card-date">Spring 2026</div>
+                </div>
+                <p>An extensive academic portfolio examining how generative AI impacts creative authority, brand identity, and marketing labor. Included an analytical research paper on algorithmic bias and data instability, an informational interview with marketing agency CEO Jo Trizila, an oral presentation, and a simulated executive campaign suite featuring brand pitch emails, strategic briefs, and press releases for a ZARA x LOEWE luxury capsule collaboration.</p>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Charli XCX Music, Fashion, Film Tour Review</div>
+                        <div class="card-subtitle">Published Journalism & Music Criticism • WRSU Rutgers Radio</div>
+                    </div>
+                    <div class="card-date">September 2026</div>
+                </div>
+                <p>An editorial music, fashion, and culture review covering Charli XCX's live performance at the Barclays Center in Brooklyn. The article analyzes the intersection of pop subcultures, visual spectacle, community dynamics, and temporary creative eras in modern music performance.</p>
+                <a href="https://wrsu.org/charli-xcxs-music-fashion-film-tour-review/" target="_blank" class="project-link">🔗 Read Published Article on WRSU.org →</a>
+            </div>
+        </section>
+
+        <!-- Professional Experience Section -->
+        <section id="experience">
+            <h2 class="section-title">Professional Experience</h2>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Big Group Hug</div>
+                        <div class="card-subtitle">Marketing and Event Coordination Intern • Melbourne, Australia</div>
+                    </div>
+                    <div class="card-date">Mar 2025 – Jun 2025</div>
+                </div>
+                <ul class="bullets">
+                    <li>Directed social media marketing strategies across LinkedIn, Instagram, and Facebook, increasing brand awareness by 14% in 3 months.</li>
+                    <li>Organized and promoted a major charity event raising nearly $20,000 in donations, setting a company record.</li>
+                    <li>Coordinated digital communications for weekly material aid distribution reaching over 120 families monthly.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Hardman App</div>
+                        <div class="card-subtitle">Web Development and Digital Marketing Intern • Barcelona, Spain</div>
+                    </div>
+                    <div class="card-date">Aug 2024 – Dec 2024</div>
+                </div>
+                <ul class="bullets">
+                    <li>Spearheaded website translation and web development strategies to expand consumer reach from Spain to U.S. and UK markets.</li>
+                    <li>Designed professional marketing graphics, brochures, and pamphlets on company vision and statistics.</li>
+                    <li>Served as the primary liaison for English-speaking clients in consulting and information sessions.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Kenny's Italian Kitchen</div>
+                        <div class="card-subtitle">Lead Bartender and Server • Dallas, Texas</div>
+                    </div>
+                    <div class="card-date">Jun 2024 – Jan 2026</div>
+                </div>
+                <ul class="bullets">
+                    <li>Served as lead bartender managing high-volume shifts serving ~100 guests per shift with a 10-person team.</li>
+                    <li>Cultivated over 20 regular repeat guests through attentive hospitality and menu knowledge.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title">Contact</h2>
+            <div class="card contact-info">
+                <p>📍 <strong>Locations:</strong> Dallas, TX / Piscataway, NJ</p>
+                <p>📧 <strong>Email:</strong> <a href="mailto:spencer.vangoor@rutgers.edu">spencer.vangoor@rutgers.edu</a></p>
+                <p>📱 <strong>Phone:</strong> (469) 616-9088</p>
+                <p>🔗 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/spencer-van-goor" target="_blank">linkedin.com/in/spencer-van-goor</a></p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Spencer Van Goor. Built with GitHub Pages.</p>
+    </footer>
+
+</body>
+</html>
